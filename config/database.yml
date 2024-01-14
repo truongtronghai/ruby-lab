@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: ror_user
+  password: ror_secret
+  host: 127.0.0.1 # use this, not 'localhost', to connect docker
+  port: 3306
+
+development:
+  <<: *default
+  database: ror_db
+
+test:
+  <<: *default
+  database: your_database_test
+
+production:
+  <<: *default
+  database: your_database_production
+  username: your_production_username
+  password: your_production_password
